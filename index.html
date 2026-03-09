@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lycamobile – Special Incentive Scheme | March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #21264E;
+    --navy-light: #2d3470;
+    --green: #08DC7D;
+    --green-dark: #08a35e;
+    --green-deeper: #067a47;
+    --blue: #245BC1;
+    --blue-light: #3a72e0;
+    --gold: #FFD54F;
+    --gold-dark: #b8860b;
+    --red: #dc2626;
+    --bg: #EFF1F3;
+    --card: #ffffff;
+    --text: #21264E;
+    --muted: #666;
+    --border: #dde0e7;
+    --accent-bg: #f4f2ff;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── BACKGROUND TEXTURE ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 10% 20%, rgba(8,220,125,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 90% 80%, rgba(36,91,193,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HEADER ── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(33,38,78,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 2px solid var(--green);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .logo-img { height: 34px; }
+
+  .logo-badge {
+    background: var(--green);
+    color: var(--navy);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-switcher {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+  .lang-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    padding: 5px 12px;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .lang-btn:hover { border-color: var(--green); color: var(--green); }
+  .lang-btn.active { background: var(--green); color: var(--navy); border-color: var(--green); }
+
+  /* ── MAIN LAYOUT ── */
+  .page-wrapper {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px 80px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 50px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(52px, 9vw, 96px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.2s forwards;
+  }
+
+  .hero-title .accent { color: var(--green); }
+
+  .hero-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 20px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.3s forwards;
+  }
+
+  /* ── STAT PILLS ── */
+  .stat-row {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 36px;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.4s forwards;
+  }
+
+  .stat-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1.5px solid rgba(255,255,255,0.12);
+    border-radius: 60px;
+    padding: 14px 28px;
+    text-align: center;
+  }
+
+  .stat-pill .val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .stat-pill .lbl {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .stat-pill.green .val { color: var(--green); }
+  .stat-pill.blue .val { color: #6ea4ff; }
+  .stat-pill.gold .val { color: var(--gold); }
+
+  /* ── SECTION ── */
+  .section {
+    margin-top: 48px;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: fadeUp 0.5s forwards;
+  }
+
+  .section:nth-child(1) { animation-delay: 0.5s; }
+  .section:nth-child(2) { animation-delay: 0.6s; }
+  .section:nth-child(3) { animation-delay: 0.7s; }
+  .section:nth-child(4) { animation-delay: 0.8s; }
+
+  .section-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+
+  .section-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .tag-green { background: var(--green); color: var(--navy); }
+  .tag-blue { background: var(--blue); color: #fff; }
+  .tag-gold { background: var(--gold); color: var(--navy); }
+  .tag-red { background: var(--red); color: #fff; }
+  .tag-dark { background: var(--navy-light); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    line-height: 1;
+    padding-top: 8px;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-header.green { background: var(--green-dark); }
+  .card-header.blue { background: var(--blue); }
+  .card-header.gold { background: linear-gradient(135deg, #c9a227, #e8c54a); }
+  .card-header.dark { background: var(--navy); border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .card-header.dark-green { background: var(--navy); border-bottom: 2px solid var(--green); }
+  .card-header.mnp { background: linear-gradient(135deg, var(--green-dark), var(--navy)); }
+
+  .card-header h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .card-header .max-badge {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .card-header .max-badge small {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .card-body {
+    padding: 24px;
+  }
+
+  /* ── INCENTIVE TABLE ── */
+  .inc-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .inc-table th {
+    background: var(--navy);
+    color: rgba(255,255,255,0.7);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--green);
+  }
+
+  .inc-table th:not(:first-child) { text-align: center; }
+
+  .inc-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .inc-table td:not(:first-child) { text-align: center; }
+
+  .inc-table tr:last-child td { border-bottom: none; }
+
+  .inc-table tr:nth-child(odd) td { background: rgba(255,255,255,0.03); }
+  .inc-table tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+
+  .inc-table .plan-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .inc-table .bonus-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--green);
+  }
+
+  .inc-table .bonus-val.blue { color: #6ea4ff; }
+  .inc-table .bonus-val.gold { color: var(--gold); }
+
+  .inc-table tr.highlight td { background: rgba(8,220,125,0.08) !important; }
+
+  /* ── RENEWAL GRID ── */
+  .renewal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .renewal-card {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .renewal-card .rcard-head {
+    padding: 14px 18px;
+    text-align: center;
+  }
+
+  .renewal-card.t1 .rcard-head { background: var(--blue); }
+  .renewal-card.t2 .rcard-head { background: linear-gradient(135deg, #9a7d0a, #c9a227); }
+
+  .renewal-card .rcard-head h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .renewal-card .rcard-head p {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+    margin-top: 2px;
+    letter-spacing: 1px;
+  }
+
+  .renewal-card .rcard-body {
+    background: rgba(255,255,255,0.06);
+    padding: 20px;
+    text-align: center;
+  }
+
+  .renewal-card .big-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .renewal-card.t1 .big-num { color: #6ea4ff; }
+  .renewal-card.t2 .big-num { color: var(--gold); }
+
+  .renewal-card .per-txt {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 6px;
+  }
+
+  .renewal-card .rcard-foot {
+    background: rgba(0,0,0,0.3);
+    padding: 12px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .renewal-card.t1 .rcard-foot strong { color: #6ea4ff; font-size: 18px; }
+  .renewal-card.t2 .rcard-foot strong { color: var(--gold); font-size: 18px; }
+
+  /* ── MNP TABLE ── */
+  .mnp-table { width: 100%; border-collapse: collapse; }
+
+  .mnp-table th {
+    background: rgba(33,38,78,0.9);
+    color: rgba(255,255,255,0.65);
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+  }
+
+  .mnp-table th:first-child { text-align: left; }
+
+  .mnp-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .mnp-table td:first-child { text-align: left; color: rgba(255,255,255,0.85); font-size: 13px; }
+
+  .mnp-table tr.row-green td { background: rgba(8,163,94,0.08); }
+  .mnp-table tr.row-blue td { background: rgba(36,91,193,0.08); }
+
+  .mnp-table .val-g { color: var(--green); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; }
+  .mnp-table .val-b { color: #6ea4ff; font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; }
+
+  /* ── GARA BOOST ── */
+  .gara-section {
+    background: linear-gradient(135deg, var(--green-deeper) 0%, var(--navy) 100%);
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .gara-head {
+    padding: 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .gara-head .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .gara-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  .gara-head .req-badge {
+    display: inline-block;
+    margin-top: 12px;
+    background: var(--navy);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 6px 20px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 40px;
+  }
+
+  .gara-head .req-badge span { color: var(--gold); font-weight: 700; }
+
+  .gara-boxes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  .gara-box {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .gara-box .box-amount {
+    padding: 24px 16px 16px;
+    text-align: center;
+  }
+
+  .gara-box .big-plus {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .gara-box.premium .big-plus { color: var(--green); }
+  .gara-box.standard .big-plus { color: #6ea4ff; }
+
+  .gara-box .per-mnp {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  .gara-box .box-operators {
+    background: rgba(0,0,0,0.35);
+    padding: 14px 16px;
+    text-align: center;
+  }
+
+  .gara-box .op-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .gara-box .op-names {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.5;
+  }
+
+  .gara-conditions {
+    padding: 16px 24px;
+    background: rgba(6,122,71,0.3);
+    border-top: 1px solid rgba(8,220,125,0.2);
+  }
+
+  .gara-conditions li {
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    padding-left: 0;
+    list-style: none;
+    padding: 2px 0;
+  }
+
+  .gara-conditions li::before { content: '↳ '; color: var(--green); font-weight: 700; }
+
+  /* ── CALCULATOR ── */
+  .calc-wrapper {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .calc-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .calc-tab {
+    flex: 1;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.4);
+    transition: all 0.2s;
+    border-bottom: 3px solid transparent;
+    position: relative;
+  }
+
+  .calc-tab:hover { color: rgba(255,255,255,0.7); }
+  .calc-tab.active { color: var(--green); border-bottom-color: var(--green); }
+
+  .calc-panel { display: none; padding: 28px; }
+  .calc-panel.active { display: block; }
+
+  .calc-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .calc-field label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .calc-field select,
+  .calc-field input[type="number"] {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 12px 14px;
+    color: #fff;
+    font-size: 15px;
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .calc-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; }
+
+  .calc-field select option { background: #2d3470; color: #fff; }
+
+  .calc-field select:focus,
+  .calc-field input:focus { border-color: var(--green); }
+
+  .calc-btn {
+    display: block;
+    width: 100%;
+    margin-top: 6px;
+    padding: 15px;
+    background: var(--green);
+    color: var(--navy);
+    border: none;
+    border-radius: 6px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .calc-btn:hover { background: #09f58c; }
+  .calc-btn:active { transform: scale(0.99); }
+
+  /* ── RESULTS BOX ── */
+  .results-box {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(8,220,125,0.2);
+    border-radius: 10px;
+    padding: 20px;
+    display: none;
+  }
+
+  .results-box.visible { display: block; }
+
+  .results-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 16px;
+  }
+
+  .result-rows { display: flex; flex-direction: column; gap: 10px; }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .result-row .r-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .result-row .r-val.green { color: var(--green); }
+  .result-row .r-val.blue { color: #6ea4ff; }
+  .result-row .r-val.gold { color: var(--gold); }
+
+  .result-total {
+    margin-top: 12px;
+    padding: 14px 18px;
+    background: linear-gradient(135deg, rgba(8,220,125,0.15), rgba(36,91,193,0.15));
+    border: 1px solid rgba(8,220,125,0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .result-total .tot-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .result-total .tot-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+  }
+
+  /* MNP Calc specific */
+  .mnp-breakdown {
+    margin-top: 12px;
+    padding: 14px;
+    background: rgba(36,91,193,0.1);
+    border: 1px solid rgba(36,91,193,0.25);
+    border-radius: 8px;
+  }
+
+  .mnp-breakdown .bd-title {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .bd-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .bd-item:last-child { border-bottom: none; }
+  .bd-item .bd-v { font-weight: 600; color: #6ea4ff; }
+  .bd-item .bd-v.gara { color: var(--green); }
+
+  /* ── TERMS ── */
+  .terms-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .term-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    border-left: 3px solid transparent;
+  }
+
+  .term-item.t-green { border-left-color: var(--green); }
+  .term-item.t-blue { border-left-color: var(--blue); }
+  .term-item.t-gold { border-left-color: var(--gold); }
+  .term-item.t-red { border-left-color: var(--red); }
+  .term-item.t-navy { border-left-color: rgba(255,255,255,0.3); }
+
+  .term-num {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .term-item.t-green .term-num { background: var(--green-dark); color: #fff; }
+  .term-item.t-blue .term-num { background: var(--blue); color: #fff; }
+  .term-item.t-gold .term-num { background: var(--gold-dark); color: #fff; }
+  .term-item.t-red .term-num { background: var(--red); color: #fff; }
+  .term-item.t-navy .term-num { background: var(--navy-light); color: #fff; }
+
+  .term-text { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+  .term-text strong { color: #fff; }
+
+  /* ── DISCLAIMER ── */
+  .disclaimer {
+    margin-top: 40px;
+    padding: 18px 22px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-left: 3px solid rgba(255,255,255,0.25);
+    border-radius: 4px;
+  }
+
+  .disclaimer h5 {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .disclaimer p { font-size: 11px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: rgba(0,0,0,0.4);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-logos { display: flex; justify-content: center; align-items: center; gap: 24px; margin-bottom: 16px; }
+  .footer-logos img { height: 32px; opacity: 0.8; }
+  .footer-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.15); }
+  .footer-address { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.8; margin-bottom: 16px; }
+  .footer-links { font-size: 11px; }
+  .footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; margin: 0 10px; }
+  .footer-links a:hover { color: var(--green); }
+  .footer-copy { font-size: 10px; color: rgba(255,255,255,0.2); margin-top: 14px; }
+
+  /* ── NOTE BOX ── */
+  .note-box {
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid var(--blue);
+    border-radius: 0 6px 6px 0;
+    margin-top: 16px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+  }
+
+  .note-box strong { color: rgba(255,255,255,0.85); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RTL for Urdu ── */
+  [lang="ur"] .rtl-content { direction: rtl; text-align: right; }
+  [lang="ur"] .calc-row { direction: rtl; }
+  [lang="ur"] .result-row { direction: rtl; }
+  [lang="ur"] .result-total { direction: rtl; }
+  [lang="ur"] .term-item { flex-direction: row-reverse; text-align: right; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .renewal-grid { grid-template-columns: 1fr; }
+    .gara-boxes { grid-template-columns: 1fr; }
+    .calc-row { grid-template-columns: 1fr; }
+    .stat-row { gap: 10px; }
+    .stat-pill { padding: 10px 18px; }
+    .stat-pill .val { font-size: 26px; }
+    .section-title { font-size: 26px; }
+    .footer-logos { flex-wrap: wrap; }
+    .mnp-table { font-size: 12px; }
+    .mnp-table td, .mnp-table th { padding: 8px 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
+<header class="site-header">
+  <div class="logo-area">
+    <img class="logo-img" src="https://cms-assets.ldsvcplatform.com/IT/s3fs-public/inline-images/logo_new1.png" alt="Lycamobile">
+    <span class="logo-badge" data-i18n="partner_program">Partner Program</span>
+  </div>
+  <div class="lang-switcher">
+    <button class="lang-btn active" onclick="setLang('en')">🇬🇧 EN</button>
+    <button class="lang-btn" onclick="setLang('it')">🇮🇹 IT</button>
+    <button class="lang-btn" onclick="setLang('ur')">🇵🇰 UR</button>
+    <button class="lang-btn" onclick="setLang('bn')">🇧🇩 BN</button>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════
+     PAGE
+═══════════════════════════════════════ -->
+<div class="page-wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow">Retailer Incentive Programme · March 2026</p>
+    <h1 class="hero-title">
+      <span data-i18n="hero_line1">Special</span><br>
+      <span class="accent" data-i18n="hero_line2">Incentive</span><br>
+      <span data-i18n="hero_line3">Scheme</span>
+    </h1>
+    <p class="hero-subtitle" data-i18n="hero_sub">Earn with every new activation, every port-in, and every renewal.<br>Exclusive rates for selected authorised retailers.</p>
+    <div class="stat-row">
+      <div class="stat-pill green"><div class="val">€6.50</div><div class="lbl" data-i18n="stat_max_act">Max Activation</div></div>
+      <div class="stat-pill blue"><div class="val">€4</div><div class="lbl" data-i18n="stat_t1">T1 Bonus</div></div>
+      <div class="stat-pill gold"><div class="val">€4</div><div class="lbl" data-i18n="stat_t2">T2 Bonus</div></div>
+      <div class="stat-pill green"><div class="val">+€40</div><div class="lbl" data-i18n="stat_gara">GARA Boost MNP</div></div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────
+       SECTION 1: NEW ACTIVATIONS
+  ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-tag tag-green" data-i18n="tag_new_act">New Activations</span>
+    </div>
+    <h2 class="section-title" data-i18n="sec1_title">Activation Bonus</h2>
+
+    <div class="card">
+      <div class="card-header green">
+        <h3 data-i18n="act_bonus_head">Bonus per Activation</h3>
+        <div class="max-badge">€6.50<small data-i18n="up_to">up to</small></div>
+      </div>
+      <div class="card-body">
+        <p style="font-size:13px;color:rgba(255,255,255,0.6);margin-bottom:16px;" data-i18n="act_desc">The activation bonus applies to all new activations with eligible plans. Minimum plan value: €6.99.</p>
+        <table class="inc-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_plan_val">Plan Value</th>
+              <th data-i18n="th_act_bonus">Activation Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="plan-val">€6.99</td><td class="bonus-val">€3.00</td></tr>
+            <tr><td class="plan-val">€7.99</td><td class="bonus-val">€3.50</td></tr>
+            <tr><td class="plan-val">€9.99</td><td class="bonus-val">€4.50</td></tr>
+            <tr><td class="plan-val">€11.99</td><td class="bonus-val">€5.20</td></tr>
+            <tr class="highlight"><td class="plan-val">€14.99</td><td class="bonus-val">€6.50</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:10px;font-style:italic;" data-i18n="terms_apply">* Terms and conditions apply. See dedicated section for details.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────
+       SECTION 2: RENEWAL BONUSES
+  ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-tag tag-blue" data-i18n="tag_renewal">Renewal Incentives</span>
+    </div>
+    <h2 class="section-title" data-i18n="sec2_title">T1 &amp; T2 Renewal Bonuses</h2>
+
+    <div class="card">
+      <div class="card-header blue">
+        <h3 data-i18n="renewal_head">Additional Renewal Bonuses</h3>
+      </div>
+      <div class="card-body">
+        <div class="renewal-grid">
+          <div class="renewal-card t1">
+            <div class="rcard-head">
+              <h4 data-i18n="t1_head">1st Renewal</h4>
+              <p>T1 Bonus</p>
+            </div>
+            <div class="rcard-body">
+              <div class="big-num">€4</div>
+              <p class="per-txt" data-i18n="per_eligible">per eligible renewed number</p>
+            </div>
+            <div class="rcard-foot"><span data-i18n="renewal_rate">Renewal rate</span> &gt; <strong>30%</strong></div>
+          </div>
+          <div class="renewal-card t2">
+            <div class="rcard-head">
+              <h4 data-i18n="t2_head">2nd Renewal</h4>
+              <p>T2 Bonus</p>
+            </div>
+            <div class="rcard-body">
+              <div class="big-num">€4</div>
+              <p class="per-txt" data-i18n="per_eligible">per eligible renewed number</p>
+            </div>
+            <div class="rcard-foot"><span data-i18n="renewal_rate">Renewal rate</span> &gt; <strong>60%</strong></div>
+          </div>
+        </div>
+        <div class="note-box">
+          <strong data-i18n="t1_note_title">T1 Bonus:</strong> <span data-i18n="t1_note">Retailers achieving a first-renewal rate exceeding 30% receive €4 per eligible renewed number.</span><br>
+          <strong data-i18n="t2_note_title">T2 Bonus:</strong> <span data-i18n="t2_note">Retailers achieving a second-renewal rate exceeding 60% (calculated on first renewals) receive €4 per eligible renewed number.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────
+       SECTION 3: MNP / PORT-IN
+  ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-tag tag-gold" data-i18n="tag_mnp">MNP · Port-In</span>
+    </div>
+    <h2 class="section-title" data-i18n="sec3_title">Port-In Compensation</h2>
+
+    <!-- MNP Standard Table -->
+    <div class="card" style="margin-bottom:20px;">
+      <div class="card-header mnp">
+        <h3 data-i18n="mnp_head">Standard MNP Incentive</h3>
+        <span style="font-size:12px;color:rgba(255,255,255,0.5);" data-i18n="mnp_sub">Normal incentive per port-in</span>
+      </div>
+      <div class="card-body" style="padding:0;">
+        <table class="mnp-table">
+          <thead>
+            <tr>
+              <th data-i18n="th_port_type">Port-In Type</th>
+              <th>1+ <sup>(2)</sup></th>
+              <th>6+</th>
+              <th>15+</th>
+              <th>35+</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row-green">
+              <td>MNP <span data-i18n="mnp_plan_lte">Plan ≤ €6.99</span> <sup style="font-size:9px;color:#888;">(1)(3)</sup></td>
+              <td class="val-g">€8</td>
+              <td class="val-g">€17</td>
+              <td class="val-g">€20</td>
+              <td class="val-g">€23</td>
+            </tr>
+            <tr class="row-blue">
+              <td>MNP <span data-i18n="mnp_plan_gt">Plan &gt; €6.99</span> <sup style="font-size:9px;color:#888;">(1)(3)</sup></td>
+              <td class="val-b">€12</td>
+              <td class="val-b">€27</td>
+              <td class="val-b">€31</td>
+              <td class="val-b">€38</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);padding:12px 18px;margin:0;" data-i18n="mnp_margin">+ SIM Margin included</p>
+      </div>
+    </div>
+
+    <!-- GARA BOOST -->
+    <div class="gara-section">
+      <div class="gara-head">
+        <p class="eyebrow" data-i18n="gara_eyebrow">Special Bonus</p>
+        <h2 data-i18n="gara_title">GARA EXTRA BOOST</h2>
+        <p style="color:var(--gold);font-size:13px;font-weight:600;margin-top:6px;" data-i18n="gara_for">FOR ALL MNP ACTIVATIONS</p>
+        <div class="req-badge"><span data-i18n="gara_req">Minimum requirement: <span>15+ MNP</span> per month</span></div>
+      </div>
+      <div class="gara-boxes">
+        <div class="gara-box premium">
+          <div class="box-amount">
+            <div class="big-plus">+€40</div>
+            <p class="per-mnp" data-i18n="per_mnp">per MNP</p>
+          </div>
+          <div class="box-operators">
+            <p class="op-label" data-i18n="from_ops">From operators</p>
+            <p class="op-names">Iliad • Fastweb<br>CoopVoce • PosteMobile</p>
+          </div>
+        </div>
+        <div class="gara-box standard">
+          <div class="box-amount">
+            <div class="big-plus">+€20</div>
+            <p class="per-mnp" data-i18n="per_mnp">per MNP</p>
+          </div>
+          <div class="box-operators">
+            <p class="op-label" data-i18n="from_ops">From operators</p>
+            <p class="op-names" data-i18n="other_ops">Other MNO<br>& MVNO</p>
+          </div>
+        </div>
+      </div>
+      <div class="gara-conditions">
+        <p style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:3px;color:var(--green);margin-bottom:8px;text-transform:uppercase;" data-i18n="gara_cond_title">GARA Conditions</p>
+        <ul style="list-style:none;">
+          <li data-i18n="gara_c1">Each port-in activation must have a valid offer, completed port-in and FCA within the same month.</li>
+          <li data-i18n="gara_c2">Only unique customers (unique tax code) + IMEI verification for each activation.</li>
+          <li data-i18n="gara_c3">Incentives credited after 60 days, requiring continuous use and renewal (min 6 months).</li>
+          <li data-i18n="gara_c4">Activations violating terms are not eligible for GARA incentive.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footnotes -->
+    <div class="note-box" style="margin-top:16px;">
+      <strong>(1)</strong> <span data-i18n="fn1">Minimum plan value for port-in is €5.99.</span><br>
+      <strong>(2)</strong> <span data-i18n="fn2">All port-in activations are counted towards the port-in threshold.</span><br>
+      <strong>(3)</strong> <span data-i18n="fn3">Only specific plans are eligible for the Port-In incentive. Check valid offers in the dedicated section.</span>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────
+       SECTION 4: CALCULATORS
+  ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-tag tag-dark" data-i18n="tag_calc">Interactive Calculator</span>
+    </div>
+    <h2 class="section-title" data-i18n="sec4_title">Incentive Calculator</h2>
+
+    <div class="calc-wrapper">
+      <div class="calc-tabs">
+        <button class="calc-tab active" onclick="switchCalcTab('new')" data-i18n="calc_tab_new">New Activations</button>
+        <button class="calc-tab" onclick="switchCalcTab('mnp')" data-i18n="calc_tab_mnp">MNP Port-In</button>
+      </div>
+
+      <!-- NEW ACTIVATIONS PANEL -->
+      <div class="calc-panel active" id="calc-new">
+        <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;" data-i18n="calc_new_desc">Calculate your total earnings from new activations and renewal bonuses.</p>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label data-i18n="lbl_plan">Plan Value</label>
+            <select id="n-plan">
+              <option value="3.00,6.99">€6.99 → €3.00 bonus</option>
+              <option value="3.50,7.99">€7.99 → €3.50 bonus</option>
+              <option value="4.50,9.99">€9.99 → €4.50 bonus</option>
+              <option value="5.20,11.99">€11.99 → €5.20 bonus</option>
+              <option value="6.50,14.99">€14.99 → €6.50 bonus</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label data-i18n="lbl_activations">Number of Activations</label>
+            <input type="number" id="n-acts" value="10" min="1" max="9999">
+          </div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label data-i18n="lbl_t1_renewals">T1 Eligible Renewals</label>
+            <input type="number" id="n-t1" value="0" min="0" max="9999" placeholder="0">
+          </div>
+          <div class="calc-field">
+            <label data-i18n="lbl_t2_renewals">T2 Eligible Renewals</label>
+            <input type="number" id="n-t2" value="0" min="0" max="9999" placeholder="0">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcNew()" data-i18n="calc_btn">Calculate Earnings</button>
+
+        <div class="results-box" id="res-new">
+          <p class="results-title" data-i18n="res_title">EARNINGS BREAKDOWN</p>
+          <div class="result-rows" id="res-new-rows"></div>
+          <div class="result-total">
+            <span class="tot-label" data-i18n="total_earnings">Total Earnings</span>
+            <span class="tot-val" id="res-new-total">€0</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MNP PANEL -->
+      <div class="calc-panel" id="calc-mnp">
+        <p style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:20px;" data-i18n="calc_mnp_desc">Calculate your total MNP earnings including normal incentive + GARA Extra Boost.</p>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label data-i18n="lbl_mnp_plan">Plan Type</label>
+            <select id="m-plan">
+              <option value="lte" data-i18n="opt_lte">Plan ≤ €6.99</option>
+              <option value="gt" data-i18n="opt_gt">Plan > €6.99</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label data-i18n="lbl_mnp_count">Number of Port-Ins</label>
+            <input type="number" id="m-count" value="10" min="1" max="9999">
+          </div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-field">
+            <label data-i18n="lbl_mnp_op">Operator Type</label>
+            <select id="m-op">
+              <option value="40" data-i18n="opt_premium">Premium (Iliad/Fastweb/CoopVoce/PosteMobile) +€40</option>
+              <option value="20" data-i18n="opt_other">Other MNO/MVNO +€20</option>
+              <option value="0" data-i18n="opt_no_gara">No GARA Boost (< 15 MNP)</option>
+            </select>
+          </div>
+          <div class="calc-field">
+            <label data-i18n="lbl_t1_mnp">T1 Eligible Renewals (MNP)</label>
+            <input type="number" id="m-t1" value="0" min="0" max="9999" placeholder="0">
+          </div>
+        </div>
+        <button class="calc-btn" onclick="calcMnp()" data-i18n="calc_btn">Calculate Earnings</button>
+
+        <div class="results-box" id="res-mnp">
+          <p class="results-title" data-i18n="res_title">EARNINGS BREAKDOWN</p>
+          <div class="result-rows" id="res-mnp-rows"></div>
+          <div class="mnp-breakdown">
+            <p class="bd-title" data-i18n="bd_title">Incentive Detail</p>
+            <div id="bd-items"></div>
+          </div>
+          <div class="result-total">
+            <span class="tot-label" data-i18n="total_earnings">Total Earnings</span>
+            <span class="tot-val" id="res-mnp-total">€0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────
+       SECTION 5: TERMS
+  ──────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-label">
+      <span class="section-tag tag-dark" data-i18n="tag_terms">Terms &amp; Conditions</span>
+    </div>
+    <h2 class="section-title" data-i18n="sec5_title">Programme Terms</h2>
+
+    <div class="card">
+      <div class="card-header dark">
+        <h3 data-i18n="terms_head">Terms &amp; Conditions</h3>
+      </div>
+      <div class="card-body">
+        <div class="terms-list">
+          <div class="term-item t-green">
+            <div class="term-num">1</div>
+            <p class="term-text" data-i18n="term1">No usage check applies to selected retailers. Standard fraud prevention rules remain fully applicable.</p>
+          </div>
+          <div class="term-item t-blue">
+            <div class="term-num">2</div>
+            <p class="term-text" data-i18n="term2">The <strong>T1 Bonus</strong> applies only to eligible renewed numbers when the first renewal rate exceeds <strong>30%</strong>.</p>
+          </div>
+          <div class="term-item t-gold">
+            <div class="term-num">3</div>
+            <p class="term-text" data-i18n="term3">The <strong>T2 Bonus</strong> applies only to eligible renewed numbers when the second renewal rate exceeds <strong>60%</strong>, calculated on the first renewal count.</p>
+          </div>
+          <div class="term-item t-green">
+            <div class="term-num">4</div>
+            <p class="term-text" data-i18n="term4">Incentives apply only to numbers renewed with plan values equal to or greater than <strong>€6.99</strong>.</p>
+          </div>
+          <div class="term-item t-red">
+            <div class="term-num">5</div>
+            <p class="term-text" data-i18n="term5"><strong>Blocked, recycled, or fraudulent</strong> activations are not eligible for any incentive.</p>
+          </div>
+          <div class="term-item t-navy">
+            <div class="term-num">6</div>
+            <p class="term-text" data-i18n="term6">Standard terms and conditions apply. All conditions related to port-in activation for the standard incentive shall also be applicable.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DISCLAIMER -->
+  <div class="disclaimer">
+    <h5 data-i18n="disc_title">Disclaimer</h5>
+    <p data-i18n="disclaimer">Lycamobile regularly monitors the monthly activities of its Authorised Retailers. Should practices be found that do not comply with applicable regulations or the terms and conditions of the incentive plan, Lycamobile reserves the right to temporarily suspend payments, pending in-depth verification. Payments will subsequently be made based on the results of such verifications.</p>
+  </div>
+
+</div><!-- end page-wrapper -->
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-logos">
+    <img src="https://eef221ebb9.imgdist.com/pub/bfra/85md611j/2vz/vdh/2hp/uslogo.png" alt="Universal Service 2006">
+    <div class="footer-divider"></div>
+    <img src="https://cms-assets.ldsvcplatform.com/IT/s3fs-public/inline-images/logo_new1.png" alt="Lycamobile">
+  </div>
+  <p class="footer-address">
+    <strong style="color:rgba(255,255,255,0.7);">Universal Service 2006 S.R.L</strong><br>
+    Via Genzano 195, 00179 Roma · P.IVA: IT 09037721009
+  </p>
+  <div class="footer-links">
+    <a href="https://retailer.lycamobile.it/" target="_blank" data-i18n="portal_link">Retailer Portal</a>
+    <a href="https://www.lycamobile.it" target="_blank">www.lycamobile.it</a>
+    <a href="/cdn-cgi/l/email-protection#65170011040c09001725091c0604080a070c09004b0c11"><span class="__cf_email__" data-cfemail="c8baadbca9a1a4adba88a4b1aba9a5a7aaa1a4ade6a1bc">[email&#160;protected]</span></a>
+  </div>
+  <p class="footer-copy">© 2026 Lycamobile. <span data-i18n="all_rights">All rights reserved.</span></p>
+</footer>
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// ═══════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════
+const translations = {
+  en: {
+    partner_program: "Partner Program",
+    hero_eyebrow: "Retailer Incentive Programme · March 2026",
+    hero_line1: "Special",
+    hero_line2: "Incentive",
+    hero_line3: "Scheme",
+    hero_sub: "Earn with every new activation, every port-in, and every renewal.<br>Exclusive rates for selected authorised retailers.",
+    stat_max_act: "Max Activation",
+    stat_t1: "T1 Bonus",
+    stat_t2: "T2 Bonus",
+    stat_gara: "GARA Boost MNP",
+    tag_new_act: "New Activations",
+    sec1_title: "Activation Bonus",
+    act_bonus_head: "Bonus per Activation",
+    up_to: "up to",
+    act_desc: "The activation bonus applies to all new activations with eligible plans. Minimum plan value: €6.99.",
+    th_plan_val: "Plan Value",
+    th_act_bonus: "Activation Bonus",
+    terms_apply: "* Terms and conditions apply. See dedicated section for details.",
+    tag_renewal: "Renewal Incentives",
+    sec2_title: "T1 & T2 Renewal Bonuses",
+    renewal_head: "Additional Renewal Bonuses",
+    t1_head: "1st Renewal",
+    t2_head: "2nd Renewal",
+    per_eligible: "per eligible renewed number",
+    renewal_rate: "Renewal rate",
+    t1_note_title: "T1 Bonus:",
+    t1_note: "Retailers achieving a first-renewal rate exceeding 30% receive €4 per eligible renewed number.",
+    t2_note_title: "T2 Bonus:",
+    t2_note: "Retailers achieving a second-renewal rate exceeding 60% (calculated on first renewals) receive €4 per eligible renewed number.",
+    tag_mnp: "MNP · Port-In",
+    sec3_title: "Port-In Compensation",
+    mnp_head: "Standard MNP Incentive",
+    mnp_sub: "Normal incentive per port-in",
+    th_port_type: "Port-In Type",
+    mnp_plan_lte: "Plan ≤ €6.99",
+    mnp_plan_gt: "Plan > €6.99",
+    mnp_margin: "+ SIM Margin included",
+    gara_eyebrow: "Special Bonus",
+    gara_title: "GARA EXTRA BOOST",
+    gara_for: "FOR ALL MNP ACTIVATIONS",
+    gara_req: "Minimum requirement: <span>15+ MNP</span> per month",
+    per_mnp: "per MNP",
+    from_ops: "From operators",
+    other_ops: "Other MNO<br>& MVNO",
+    gara_cond_title: "GARA Conditions",
+    gara_c1: "Each port-in activation must have a valid offer, completed port-in and FCA within the same month.",
+    gara_c2: "Only unique customers (unique tax code) + IMEI verification for each activation.",
+    gara_c3: "Incentives credited after 60 days, requiring continuous use and renewal (min 6 months).",
+    gara_c4: "Activations violating terms are not eligible for GARA incentive.",
+    fn1: "Minimum plan value for port-in is €5.99.",
+    fn2: "All port-in activations are counted towards the port-in threshold.",
+    fn3: "Only specific plans are eligible for the Port-In incentive. Check valid offers in the dedicated section.",
+    tag_calc: "Interactive Calculator",
+    sec4_title: "Incentive Calculator",
+    calc_tab_new: "New Activations",
+    calc_tab_mnp: "MNP Port-In",
+    calc_new_desc: "Calculate your total earnings from new activations and renewal bonuses.",
+    lbl_plan: "Plan Value",
+    lbl_activations: "Number of Activations",
+    lbl_t1_renewals: "T1 Eligible Renewals",
+    lbl_t2_renewals: "T2 Eligible Renewals",
+    calc_btn: "Calculate Earnings",
+    res_title: "EARNINGS BREAKDOWN",
+    total_earnings: "Total Earnings",
+    calc_mnp_desc: "Calculate your total MNP earnings including normal incentive + GARA Extra Boost.",
+    lbl_mnp_plan: "Plan Type",
+    opt_lte: "Plan ≤ €6.99",
+    opt_gt: "Plan > €6.99",
+    lbl_mnp_count: "Number of Port-Ins",
+    lbl_mnp_op: "Operator Type",
+    opt_premium: "Premium (Iliad/Fastweb/CoopVoce/PosteMobile) +€40",
+    opt_other: "Other MNO/MVNO +€20",
+    opt_no_gara: "No GARA Boost (< 15 MNP)",
+    lbl_t1_mnp: "T1 Eligible Renewals (MNP)",
+    bd_title: "Incentive Detail",
+    tag_terms: "Terms & Conditions",
+    sec5_title: "Programme Terms",
+    terms_head: "Terms & Conditions",
+    term1: "No usage check applies to selected retailers. Standard fraud prevention rules remain fully applicable.",
+    term2: "The <strong>T1 Bonus</strong> applies only to eligible renewed numbers when the first renewal rate exceeds <strong>30%</strong>.",
+    term3: "The <strong>T2 Bonus</strong> applies only to eligible renewed numbers when the second renewal rate exceeds <strong>60%</strong>, calculated on the first renewal count.",
+    term4: "Incentives apply only to numbers renewed with plan values equal to or greater than <strong>€6.99</strong>.",
+    term5: "<strong>Blocked, recycled, or fraudulent</strong> activations are not eligible for any incentive.",
+    term6: "Standard terms and conditions apply. All conditions related to port-in activation for the standard incentive shall also be applicable.",
+    disc_title: "Disclaimer",
+    disclaimer: "Lycamobile regularly monitors the monthly activities of its Authorised Retailers. Should practices be found that do not comply with applicable regulations or the terms and conditions of the incentive plan, Lycamobile reserves the right to temporarily suspend payments, pending in-depth verification. Payments will subsequently be made based on the results of such verifications.",
+    portal_link: "Retailer Portal",
+    all_rights: "All rights reserved.",
+    // Calculator result labels
+    calc_act_label: "Activation Bonus",
+    calc_t1_label: "T1 Renewal Bonus",
+    calc_t2_label: "T2 Renewal Bonus",
+    calc_std_mnp: "Standard MNP Incentive",
+    calc_gara_bonus: "GARA Extra Boost",
+    calc_t1_mnp_label: "T1 Renewal Bonus (MNP)"
+  },
+  it: {
+    partner_program: "Partner Program",
+    hero_eyebrow: "Programma Incentivi Rivenditori · Marzo 2026",
+    hero_line1: "Schema",
+    hero_line2: "Incentivi",
+    hero_line3: "Speciali",
+    hero_sub: "Guadagna con ogni nuova attivazione, ogni port-in e ogni rinnovo.<br>Tariffe esclusive per rivenditori autorizzati selezionati.",
+    stat_max_act: "Max Attivazione",
+    stat_t1: "Bonus T1",
+    stat_t2: "Bonus T2",
+    stat_gara: "GARA Boost MNP",
+    tag_new_act: "Nuove Attivazioni",
+    sec1_title: "Bonus Attivazione",
+    act_bonus_head: "Bonus per Attivazione",
+    up_to: "fino a",
+    act_desc: "Il bonus attivazione si applica a tutte le nuove attivazioni con piani idonei. Valore minimo piano: €6,99.",
+    th_plan_val: "Valore Piano",
+    th_act_bonus: "Bonus Attivazione",
+    terms_apply: "* Si applicano termini e condizioni. Vedi sezione dedicata per i dettagli.",
+    tag_renewal: "Incentivi Rinnovo",
+    sec2_title: "Bonus Rinnovo T1 & T2",
+    renewal_head: "Bonus Aggiuntivi Rinnovo",
+    t1_head: "Primo Rinnovo",
+    t2_head: "Secondo Rinnovo",
+    per_eligible: "per numero idoneo rinnovato",
+    renewal_rate: "Tasso di rinnovo",
+    t1_note_title: "Bonus T1:",
+    t1_note: "I rivenditori che raggiungono un tasso di primo rinnovo superiore al 30% riceveranno €4 per ogni numero idoneo rinnovato.",
+    t2_note_title: "Bonus T2:",
+    t2_note: "I rivenditori che raggiungono un tasso di secondo rinnovo superiore al 60%, calcolato sui primi rinnovi, riceveranno €4 per ogni numero idoneo rinnovato.",
+    tag_mnp: "MNP · Portabilità",
+    sec3_title: "Compensi per Portabilità",
+    mnp_head: "Incentivo MNP Standard",
+    mnp_sub: "Incentivo normale per portabilità",
+    th_port_type: "Tipo di Portabilità",
+    mnp_plan_lte: "Piano ≤ €6,99",
+    mnp_plan_gt: "Piano > €6,99",
+    mnp_margin: "+ Margine SIM incluso",
+    gara_eyebrow: "Bonus Speciale",
+    gara_title: "GARA EXTRA BOOST",
+    gara_for: "PER TUTTI I MNP",
+    gara_req: "Requisito minimo: <span>15+ MNP</span> al mese",
+    per_mnp: "per MNP",
+    from_ops: "Da operatori",
+    other_ops: "Altri MNO<br>e MVNO",
+    gara_cond_title: "Condizioni GARA",
+    gara_c1: "Ogni attivazione port-in deve avere offerta valida, port-in completato e FCA entro lo stesso mese.",
+    gara_c2: "Solo clienti unici (codice fiscale univoco) + verifica IMEI per ogni attivazione.",
+    gara_c3: "Incentivi accreditati dopo 60 giorni e richiesto uso e rinnovo continuo (min 6 mesi).",
+    gara_c4: "Attivazioni che violano i termini non idonee per incentivo GARA.",
+    fn1: "Il valore minimo del piano tariffario per il port-in è di €5,99.",
+    fn2: "Tutte le attivazioni Port-in saranno considerate ai fini della soglia Port-in.",
+    fn3: "Solo specifici piani sono idonei per l'incentivo Port In. Verifica le offerte valide nella sezione dedicata.",
+    tag_calc: "Calcolatore Interattivo",
+    sec4_title: "Calcolatore Incentivi",
+    calc_tab_new: "Nuove Attivazioni",
+    calc_tab_mnp: "MNP Port-In",
+    calc_new_desc: "Calcola i tuoi guadagni totali dalle nuove attivazioni e dai bonus rinnovo.",
+    lbl_plan: "Valore Piano",
+    lbl_activations: "Numero di Attivazioni",
+    lbl_t1_renewals: "Rinnovi Idonei T1",
+    lbl_t2_renewals: "Rinnovi Idonei T2",
+    calc_btn: "Calcola Guadagni",
+    res_title: "RIEPILOGO GUADAGNI",
+    total_earnings: "Guadagni Totali",
+    calc_mnp_desc: "Calcola i tuoi guadagni MNP totali incluso incentivo normale + GARA Extra Boost.",
+    lbl_mnp_plan: "Tipo Piano",
+    opt_lte: "Piano ≤ €6,99",
+    opt_gt: "Piano > €6,99",
+    lbl_mnp_count: "Numero Port-In",
+    lbl_mnp_op: "Tipo Operatore",
+    opt_premium: "Premium (Iliad/Fastweb/CoopVoce/PosteMobile) +€40",
+    opt_other: "Altri MNO/MVNO +€20",
+    opt_no_gara: "Nessun GARA Boost (< 15 MNP)",
+    lbl_t1_mnp: "Rinnovi Idonei T1 (MNP)",
+    bd_title: "Dettaglio Incentivo",
+    tag_terms: "Termini e Condizioni",
+    sec5_title: "Termini del Programma",
+    terms_head: "Termini e Condizioni",
+    term1: "Nessun controllo utilizzo si applica ai rivenditori selezionati. Le regole standard di prevenzione frodi rimangono pienamente applicabili.",
+    term2: "Il <strong>Bonus T1</strong> si applica solo ai numeri idonei rinnovati quando il tasso di primo rinnovo supera il <strong>30%</strong>.",
+    term3: "Il <strong>Bonus T2</strong> si applica solo ai numeri idonei rinnovati quando il tasso di secondo rinnovo supera il <strong>60%</strong>, calcolato sul conteggio dei primi rinnovi.",
+    term4: "Gli incentivi si applicano solo ai numeri rinnovati con valori di piano pari o superiori a <strong>€6,99</strong>.",
+    term5: "Le attivazioni <strong>bloccate, riciclate o fraudolente</strong> non sono idonee per gli incentivi.",
+    term6: "Si applicano i termini e le condizioni standard. Tutte le condizioni relative alla portabilità in attivazione previste per l'incentivo standard saranno applicabili.",
+    disc_title: "Disclaimer",
+    disclaimer: "Lycamobile monitora regolarmente le attività mensili dei propri Rivenditori Autorizzati. Qualora vengano riscontrate pratiche non conformi alle normative vigenti o ai termini e condizioni del piano di incentivazione, Lycamobile si riserva il diritto di sospendere temporaneamente i pagamenti, in attesa di verifiche approfondite. I pagamenti verranno successivamente effettuati in base agli esiti delle verifiche stesse.",
+    portal_link: "Portale Rivenditore",
+    all_rights: "Tutti i diritti riservati.",
+    calc_act_label: "Bonus Attivazione",
+    calc_t1_label: "Bonus Rinnovo T1",
+    calc_t2_label: "Bonus Rinnovo T2",
+    calc_std_mnp: "Incentivo MNP Standard",
+    calc_gara_bonus: "GARA Extra Boost",
+    calc_t1_mnp_label: "Bonus Rinnovo T1 (MNP)"
+  },
+  ur: {
+    partner_program: "پارٹنر پروگرام",
+    hero_eyebrow: "ریٹیلر انسینٹو پروگرام · مارچ 2026",
+    hero_line1: "خصوصی",
+    hero_line2: "انسینٹو",
+    hero_line3: "اسکیم",
+    hero_sub: "ہر نئی ایکٹیویشن، ہر پورٹ-ان اور ہر رینیوول پر کمائیں۔<br>منتخب مجاز ریٹیلرز کے لیے خصوصی شرحیں۔",
+    stat_max_act: "زیادہ سے زیادہ ایکٹیویشن",
+    stat_t1: "T1 بونس",
+    stat_t2: "T2 بونس",
+    stat_gara: "گارا بوسٹ MNP",
+    tag_new_act: "نئی ایکٹیویشنز",
+    sec1_title: "ایکٹیویشن بونس",
+    act_bonus_head: "فی ایکٹیویشن بونس",
+    up_to: "تک",
+    act_desc: "ایکٹیویشن بونس تمام نئی ایکٹیویشنز پر لاگو ہوتا ہے جو اہل پلانز کے ساتھ ہوں۔ کم سے کم پلان قیمت: €6.99۔",
+    th_plan_val: "پلان قیمت",
+    th_act_bonus: "ایکٹیویشن بونس",
+    terms_apply: "* شرائط و ضوابط لاگو ہوتے ہیں۔ تفصیلات کے لیے مخصوص سیکشن دیکھیں۔",
+    tag_renewal: "رینیوول انسینٹوز",
+    sec2_title: "T1 اور T2 رینیوول بونس",
+    renewal_head: "اضافی رینیوول بونس",
+    t1_head: "پہلا رینیوول",
+    t2_head: "دوسرا رینیوول",
+    per_eligible: "فی اہل رینیوڈ نمبر",
+    renewal_rate: "رینیوول شرح",
+    t1_note_title: "T1 بونس:",
+    t1_note: "وہ ریٹیلرز جو 30% سے زیادہ پہلی رینیوول شرح حاصل کرتے ہیں انہیں فی اہل رینیوڈ نمبر €4 ملیں گے۔",
+    t2_note_title: "T2 بونس:",
+    t2_note: "وہ ریٹیلرز جو 60% سے زیادہ دوسری رینیوول شرح حاصل کرتے ہیں (پہلی رینیوولز پر حساب) انہیں فی اہل رینیوڈ نمبر €4 ملیں گے۔",
+    tag_mnp: "MNP · پورٹ-ان",
+    sec3_title: "پورٹ-ان معاوضہ",
+    mnp_head: "معیاری MNP انسینٹو",
+    mnp_sub: "فی پورٹ-ان معمول کا انسینٹو",
+    th_port_type: "پورٹ-ان کی قسم",
+    mnp_plan_lte: "پلان ≤ €6.99",
+    mnp_plan_gt: "پلان > €6.99",
+    mnp_margin: "+ SIM مارجن شامل",
+    gara_eyebrow: "خصوصی بونس",
+    gara_title: "گارا ایکسٹرا بوسٹ",
+    gara_for: "تمام MNP ایکٹیویشنز کے لیے",
+    gara_req: "کم سے کم ضرورت: <span>15+ MNP</span> ماہانہ",
+    per_mnp: "فی MNP",
+    from_ops: "آپریٹرز سے",
+    other_ops: "دیگر MNO<br>اور MVNO",
+    gara_cond_title: "گارا شرائط",
+    gara_c1: "ہر پورٹ-ان ایکٹیویشن میں اسی مہینے میں درست آفر، مکمل پورٹ-ان اور FCA ہونا ضروری ہے۔",
+    gara_c2: "صرف منفرد صارفین (منفرد ٹیکس کوڈ) + ہر ایکٹیویشن کے لیے IMEI تصدیق۔",
+    gara_c3: "انسینٹوز 60 دن بعد جمع کیے جاتے ہیں، مسلسل استعمال اور رینیوول کی ضرورت ہوتی ہے (کم از کم 6 ماہ)۔",
+    gara_c4: "شرائط کی خلاف ورزی کرنے والی ایکٹیویشنز گارا انسینٹو کے لیے اہل نہیں ہیں۔",
+    fn1: "پورٹ-ان کے لیے پلان کی کم از کم قیمت €5.99 ہے۔",
+    fn2: "تمام پورٹ-ان ایکٹیویشنز پورٹ-ان حد کے لیے شمار کی جاتی ہیں۔",
+    fn3: "صرف مخصوص پلان پورٹ-ان انسینٹو کے لیے اہل ہیں۔ مخصوص سیکشن میں درست آفرز چیک کریں۔",
+    tag_calc: "انٹرایکٹو کیلکولیٹر",
+    sec4_title: "انسینٹو کیلکولیٹر",
+    calc_tab_new: "نئی ایکٹیویشنز",
+    calc_tab_mnp: "MNP پورٹ-ان",
+    calc_new_desc: "نئی ایکٹیویشنز اور رینیوول بونس سے اپنی کل کمائی حساب کریں۔",
+    lbl_plan: "پلان قیمت",
+    lbl_activations: "ایکٹیویشنز کی تعداد",
+    lbl_t1_renewals: "T1 اہل رینیوولز",
+    lbl_t2_renewals: "T2 اہل رینیوولز",
+    calc_btn: "کمائی حساب کریں",
+    res_title: "آمدنی کی تفصیل",
+    total_earnings: "کل کمائی",
+    calc_mnp_desc: "معمول کے انسینٹو + گارا ایکسٹرا بوسٹ سمیت اپنی کل MNP کمائی حساب کریں۔",
+    lbl_mnp_plan: "پلان کی قسم",
+    opt_lte: "پلان ≤ €6.99",
+    opt_gt: "پلان > €6.99",
+    lbl_mnp_count: "پورٹ-انز کی تعداد",
+    lbl_mnp_op: "آپریٹر کی قسم",
+    opt_premium: "پریمیم (Iliad/Fastweb/CoopVoce/PosteMobile) +€40",
+    opt_other: "دیگر MNO/MVNO +€20",
+    opt_no_gara: "کوئی گارا بوسٹ نہیں (< 15 MNP)",
+    lbl_t1_mnp: "T1 اہل رینیوولز (MNP)",
+    bd_title: "انسینٹو تفصیل",
+    tag_terms: "شرائط و ضوابط",
+    sec5_title: "پروگرام کی شرائط",
+    terms_head: "شرائط و ضوابط",
+    term1: "منتخب ریٹیلرز پر کوئی استعمال چیک لاگو نہیں ہوتا۔ معیاری فراڈ روک تھام کے قوانین مکمل طور پر لاگو رہتے ہیں۔",
+    term2: "<strong>T1 بونس</strong> صرف اہل رینیوڈ نمبروں پر لاگو ہوتا ہے جب پہلی رینیوول شرح <strong>30%</strong> سے زیادہ ہو۔",
+    term3: "<strong>T2 بونس</strong> صرف اہل رینیوڈ نمبروں پر لاگو ہوتا ہے جب دوسری رینیوول شرح <strong>60%</strong> سے زیادہ ہو، جو پہلی رینیوول گنتی پر حساب کی گئی ہو۔",
+    term4: "انسینٹوز صرف ان نمبروں پر لاگو ہوتے ہیں جو <strong>€6.99</strong> یا اس سے زیادہ کی پلان قیمت کے ساتھ رینیو کیے گئے ہوں۔",
+    term5: "<strong>بلاک، ری سائیکل یا دھوکہ دہی</strong> والی ایکٹیویشنز کسی بھی انسینٹو کے لیے اہل نہیں ہیں۔",
+    term6: "معیاری شرائط و ضوابط لاگو ہوتے ہیں۔ معیاری انسینٹو کے لیے پورٹ-ان ایکٹیویشن سے متعلق تمام شرائط بھی لاگو ہوں گی۔",
+    disc_title: "دستبرداری",
+    disclaimer: "Lycamobile باقاعدگی سے اپنے مجاز ریٹیلرز کی ماہانہ سرگرمیوں کی نگرانی کرتا ہے۔ اگر ایسی سرگرمیاں پائی جائیں جو لاگو ضوابط یا انسینٹو پلان کی شرائط و ضوابط کی تعمیل نہیں کرتیں، تو Lycamobile گہری جانچ کے دوران ادائیگیوں کو عارضی طور پر معطل کرنے کا حق محفوظ رکھتا ہے۔ ادائیگیاں بعد میں اس طرح کی تصدیق کے نتائج کی بنیاد پر کی جائیں گی۔",
+    portal_link: "ریٹیلر پورٹل",
+    all_rights: "تمام حقوق محفوظ ہیں۔",
+    calc_act_label: "ایکٹیویشن بونس",
+    calc_t1_label: "T1 رینیوول بونس",
+    calc_t2_label: "T2 رینیوول بونس",
+    calc_std_mnp: "معیاری MNP انسینٹو",
+    calc_gara_bonus: "گارا ایکسٹرا بوسٹ",
+    calc_t1_mnp_label: "T1 رینیوول بونس (MNP)"
+  },
+  bn: {
+    partner_program: "পার্টনার প্রোগ্রাম",
+    hero_eyebrow: "রিটেইলার ইনসেন্টিভ প্রোগ্রাম · মার্চ ২০২৬",
+    hero_line1: "বিশেষ",
+    hero_line2: "ইনসেন্টিভ",
+    hero_line3: "স্কিম",
+    hero_sub: "প্রতিটি নতুন অ্যাক্টিভেশন, প্রতিটি পোর্ট-ইন এবং প্রতিটি নবায়নে আয় করুন।<br>নির্বাচিত অনুমোদিত রিটেইলারদের জন্য বিশেষ হার।",
+    stat_max_act: "সর্বোচ্চ অ্যাক্টিভেশন",
+    stat_t1: "T1 বোনাস",
+    stat_t2: "T2 বোনাস",
+    stat_gara: "গারা বুস্ট MNP",
+    tag_new_act: "নতুন অ্যাক্টিভেশন",
+    sec1_title: "অ্যাক্টিভেশন বোনাস",
+    act_bonus_head: "প্রতি অ্যাক্টিভেশনে বোনাস",
+    up_to: "পর্যন্ত",
+    act_desc: "অ্যাক্টিভেশন বোনাস সমস্ত নতুন অ্যাক্টিভেশনে যোগ্য প্ল্যানের সাথে প্রযোজ্য। ন্যূনতম প্ল্যান মূল্য: €৬.৯৯।",
+    th_plan_val: "প্ল্যান মূল্য",
+    th_act_bonus: "অ্যাক্টিভেশন বোনাস",
+    terms_apply: "* শর্তাবলী প্রযোজ্য। বিস্তারিতের জন্য নির্ধারিত বিভাগ দেখুন।",
+    tag_renewal: "নবায়ন ইনসেন্টিভ",
+    sec2_title: "T1 এবং T2 নবায়ন বোনাস",
+    renewal_head: "অতিরিক্ত নবায়ন বোনাস",
+    t1_head: "১ম নবায়ন",
+    t2_head: "২য় নবায়ন",
+    per_eligible: "প্রতি যোগ্য নবায়িত নম্বর",
+    renewal_rate: "নবায়নের হার",
+    t1_note_title: "T1 বোনাস:",
+    t1_note: "যে রিটেইলাররা ৩০% এর বেশি প্রথম-নবায়ন হার অর্জন করেন তারা প্রতি যোগ্য নবায়িত নম্বরে €৪ পাবেন।",
+    t2_note_title: "T2 বোনাস:",
+    t2_note: "যে রিটেইলাররা ৬০% এর বেশি দ্বিতীয়-নবায়ন হার অর্জন করেন (প্রথম নবায়নের উপর গণনা) তারা প্রতি যোগ্য নবায়িত নম্বরে €৪ পাবেন।",
+    tag_mnp: "MNP · পোর্ট-ইন",
+    sec3_title: "পোর্ট-ইন ক্ষতিপূরণ",
+    mnp_head: "স্ট্যান্ডার্ড MNP ইনসেন্টিভ",
+    mnp_sub: "প্রতি পোর্ট-ইনে স্বাভাবিক ইনসেন্টিভ",
+    th_port_type: "পোর্ট-ইনের ধরন",
+    mnp_plan_lte: "প্ল্যান ≤ €৬.৯৯",
+    mnp_plan_gt: "প্ল্যান > €৬.৯৯",
+    mnp_margin: "+ SIM মার্জিন অন্তর্ভুক্ত",
+    gara_eyebrow: "বিশেষ বোনাস",
+    gara_title: "গারা এক্সট্রা বুস্ট",
+    gara_for: "সকল MNP অ্যাক্টিভেশনের জন্য",
+    gara_req: "ন্যূনতম প্রয়োজনীয়তা: <span>১৫+ MNP</span> প্রতি মাসে",
+    per_mnp: "প্রতি MNP",
+    from_ops: "অপারেটর থেকে",
+    other_ops: "অন্যান্য MNO<br>এবং MVNO",
+    gara_cond_title: "গারা শর্তাবলী",
+    gara_c1: "প্রতিটি পোর্ট-ইন অ্যাক্টিভেশনে একই মাসের মধ্যে বৈধ অফার, সম্পূর্ণ পোর্ট-ইন এবং FCA থাকতে হবে।",
+    gara_c2: "শুধুমাত্র অনন্য গ্রাহক (অনন্য ট্যাক্স কোড) + প্রতিটি অ্যাক্টিভেশনের জন্য IMEI যাচাই।",
+    gara_c3: "ইনসেন্টিভ ৬০ দিন পরে জমা, অবিচ্ছিন্ন ব্যবহার এবং নবায়ন প্রয়োজন (ন্যূনতম ৬ মাস)।",
+    gara_c4: "শর্ত লঙ্ঘনকারী অ্যাক্টিভেশন গারা ইনসেন্টিভের জন্য যোগ্য নয়।",
+    fn1: "পোর্ট-ইনের জন্য ন্যূনতম প্ল্যান মূল্য €৫.৯৯।",
+    fn2: "সমস্ত পোর্ট-ইন অ্যাক্টিভেশন পোর্ট-ইন থ্রেশহোল্ডের দিকে গণনা করা হয়।",
+    fn3: "শুধুমাত্র নির্দিষ্ট প্ল্যান পোর্ট-ইন ইনসেন্টিভের জন্য যোগ্য। নির্ধারিত বিভাগে বৈধ অফার পরীক্ষা করুন।",
+    tag_calc: "ইন্টারেক্টিভ ক্যালকুলেটর",
+    sec4_title: "ইনসেন্টিভ ক্যালকুলেটর",
+    calc_tab_new: "নতুন অ্যাক্টিভেশন",
+    calc_tab_mnp: "MNP পোর্ট-ইন",
+    calc_new_desc: "নতুন অ্যাক্টিভেশন এবং নবায়ন বোনাস থেকে আপনার মোট উপার্জন গণনা করুন।",
+    lbl_plan: "প্ল্যান মূল্য",
+    lbl_activations: "অ্যাক্টিভেশনের সংখ্যা",
+    lbl_t1_renewals: "T1 যোগ্য নবায়ন",
+    lbl_t2_renewals: "T2 যোগ্য নবায়ন",
+    calc_btn: "উপার্জন গণনা করুন",
+    res_title: "উপার্জনের বিবরণ",
+    total_earnings: "মোট উপার্জন",
+    calc_mnp_desc: "স্বাভাবিক ইনসেন্টিভ + গারা এক্সট্রা বুস্ট সহ আপনার মোট MNP উপার্জন গণনা করুন।",
+    lbl_mnp_plan: "প্ল্যানের ধরন",
+    opt_lte: "প্ল্যান ≤ €৬.৯৯",
+    opt_gt: "প্ল্যান > €৬.৯৯",
+    lbl_mnp_count: "পোর্ট-ইনের সংখ্যা",
+    lbl_mnp_op: "অপারেটরের ধরন",
+    opt_premium: "প্রিমিয়াম (Iliad/Fastweb/CoopVoce/PosteMobile) +€40",
+    opt_other: "অন্যান্য MNO/MVNO +€20",
+    opt_no_gara: "কোনো গারা বুস্ট নেই (< 15 MNP)",
+    lbl_t1_mnp: "T1 যোগ্য নবায়ন (MNP)",
+    bd_title: "ইনসেন্টিভ বিবরণ",
+    tag_terms: "শর্তাবলী",
+    sec5_title: "প্রোগ্রামের শর্তাবলী",
+    terms_head: "শর্তাবলী",
+    term1: "নির্বাচিত রিটেইলারদের উপর কোনো ব্যবহার পরীক্ষা প্রযোজ্য নয়। স্ট্যান্ডার্ড জালিয়াতি প্রতিরোধ নিয়ম সম্পূর্ণরূপে প্রযোজ্য থাকে।",
+    term2: "<strong>T1 বোনাস</strong> শুধুমাত্র যোগ্য নবায়িত নম্বরে প্রযোজ্য যখন প্রথম নবায়নের হার <strong>৩০%</strong> এর বেশি হয়।",
+    term3: "<strong>T2 বোনাস</strong> শুধুমাত্র যোগ্য নবায়িত নম্বরে প্রযোজ্য যখন দ্বিতীয় নবায়নের হার <strong>৬০%</strong> এর বেশি হয়, প্রথম নবায়ন গণনার উপর ভিত্তি করে।",
+    term4: "ইনসেন্টিভ শুধুমাত্র সেই নম্বরে প্রযোজ্য যা <strong>€৬.৯৯</strong> বা তার বেশি প্ল্যান মূল্যে নবায়িত।",
+    term5: "<strong>ব্লক, পুনর্ব্যবহারযোগ্য বা জালিয়াতিমূলক</strong> অ্যাক্টিভেশন কোনো ইনসেন্টিভের জন্য যোগ্য নয়।",
+    term6: "স্ট্যান্ডার্ড শর্তাবলী প্রযোজ্য। স্ট্যান্ডার্ড ইনসেন্টিভের জন্য পোর্ট-ইন অ্যাক্টিভেশন সম্পর্কিত সমস্ত শর্তও প্রযোজ্য হবে।",
+    disc_title: "দায়বদ্ধতার অস্বীকৃতি",
+    disclaimer: "Lycamobile নিয়মিতভাবে তার অনুমোদিত রিটেইলারদের মাসিক কার্যক্রম পর্যবেক্ষণ করে। যদি এমন কোনো অনুশীলন পাওয়া যায় যা প্রযোজ্য বিধিবিধান বা ইনসেন্টিভ পরিকল্পনার শর্তাবলীর সাথে সঙ্গতিপূর্ণ নয়, Lycamobile গভীর যাচাইয়ের অপেক্ষায় অস্থায়ীভাবে পেমেন্ট স্থগিত করার অধিকার সংরক্ষণ করে।",
+    portal_link: "রিটেইলার পোর্টাল",
+    all_rights: "সমস্ত অধিকার সংরক্ষিত।",
+    calc_act_label: "অ্যাক্টিভেশন বোনাস",
+    calc_t1_label: "T1 নবায়ন বোনাস",
+    calc_t2_label: "T2 নবায়ন বোনাস",
+    calc_std_mnp: "স্ট্যান্ডার্ড MNP ইনসেন্টিভ",
+    calc_gara_bonus: "গারা এক্সট্রা বুস্ট",
+    calc_t1_mnp_label: "T1 নবায়ন বোনাস (MNP)"
+  }
+};
+
+let currentLang = 'en';
+
+function t(key) {
+  return translations[currentLang][key] || translations['en'][key] || key;
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    if (b.textContent.includes(lang.toUpperCase())) b.classList.add('active');
+  });
+
+  // Set RTL for Urdu
+  document.documentElement.lang = lang;
+  if (lang === 'ur') {
+    document.body.style.direction = 'rtl';
+  } else {
+    document.body.style.direction = 'ltr';
+  }
+
+  // Update all i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    const val = t(key);
+    if (val) el.innerHTML = val;
+  });
+
+  // Update selects that have options
+  updateSelectOptions();
+
+  // Hide results when language changes
+  document.getElementById('res-new').classList.remove('visible');
+  document.getElementById('res-mnp').classList.remove('visible');
+}
+
+function updateSelectOptions() {
+  const nPlan = document.getElementById('n-plan');
+  if (nPlan) {
+    const vals = ['3.00,6.99','3.50,7.99','4.50,9.99','5.20,11.99','6.50,14.99'];
+    const bonuses = ['€3.00','€3.50','€4.50','€5.20','€6.50'];
+    const plans = ['€6.99','€7.99','€9.99','€11.99','€14.99'];
+    nPlan.innerHTML = vals.map((v,i) => `<option value="${v}">${plans[i]} → ${bonuses[i]} bonus</option>`).join('');
+  }
+
+  const mPlan = document.getElementById('m-plan');
+  if (mPlan) {
+    mPlan.innerHTML = `
+      <option value="lte">${t('opt_lte')}</option>
+      <option value="gt">${t('opt_gt')}</option>
+    `;
+  }
+
+  const mOp = document.getElementById('m-op');
+  if (mOp) {
+    mOp.innerHTML = `
+      <option value="40">${t('opt_premium')}</option>
+      <option value="20">${t('opt_other')}</option>
+      <option value="0">${t('opt_no_gara')}</option>
+    `;
+  }
+}
+
+// ═══════════════════════════════════
+// CALCULATOR LOGIC
+// ═══════════════════════════════════
+function switchCalcTab(tab) {
+  document.querySelectorAll('.calc-tab').forEach((b,i) => {
+    b.classList.toggle('active', (tab === 'new' && i === 0) || (tab === 'mnp' && i === 1));
+  });
+  document.getElementById('calc-new').classList.toggle('active', tab === 'new');
+  document.getElementById('calc-mnp').classList.toggle('active', tab === 'mnp');
+}
+
+function makeFmt(n) { return '€' + n.toFixed(2).replace(/\.00$/, ''); }
+
+function calcNew() {
+  const planSel = document.getElementById('n-plan').value.split(',');
+  const bonus = parseFloat(planSel[0]);
+  const acts = parseInt(document.getElementById('n-acts').value) || 0;
+  const t1 = parseInt(document.getElementById('n-t1').value) || 0;
+  const t2 = parseInt(document.getElementById('n-t2').value) || 0;
+
+  const actTotal = acts * bonus;
+  const t1Total = t1 * 4;
+  const t2Total = t2 * 4;
+  const grand = actTotal + t1Total + t2Total;
+
+  const rows = document.getElementById('res-new-rows');
+  rows.innerHTML = `
+    <div class="result-row">
+      <span>${t('calc_act_label')} (${acts} × ${makeFmt(bonus)})</span>
+      <span class="r-val green">${makeFmt(actTotal)}</span>
+    </div>
+    ${t1 > 0 ? `<div class="result-row">
+      <span>${t('calc_t1_label')} (${t1} × €4)</span>
+      <span class="r-val blue">${makeFmt(t1Total)}</span>
+    </div>` : ''}
+    ${t2 > 0 ? `<div class="result-row">
+      <span>${t('calc_t2_label')} (${t2} × €4)</span>
+      <span class="r-val gold">${makeFmt(t2Total)}</span>
+    </div>` : ''}
+  `;
+  document.getElementById('res-new-total').textContent = makeFmt(grand);
+  document.getElementById('res-new').classList.add('visible');
+}
+
+function calcMnp() {
+  const planType = document.getElementById('m-plan').value;
+  const count = parseInt(document.getElementById('m-count').value) || 0;
+  const garaBonus = parseInt(document.getElementById('m-op').value);
+  const t1r = parseInt(document.getElementById('m-t1').value) || 0;
+
+  // Determine standard MNP rate based on count and plan type
+  let stdRate;
+  const lteRates = count >= 35 ? 23 : count >= 15 ? 20 : count >= 6 ? 17 : 8;
+  const gtRates  = count >= 35 ? 38 : count >= 15 ? 31 : count >= 6 ? 27 : 12;
+  stdRate = planType === 'lte' ? lteRates : gtRates;
+
+  const stdTotal = count * stdRate;
+  const garaTotal = garaBonus > 0 ? count * garaBonus : 0;
+  const t1Total = t1r * 4;
+  const grand = stdTotal + garaTotal + t1Total;
+
+  const tierLabel = count >= 35 ? '35+' : count >= 15 ? '15+' : count >= 6 ? '6+' : '1+';
+
+  const rows = document.getElementById('res-mnp-rows');
+  rows.innerHTML = `
+    <div class="result-row">
+      <span>${t('calc_std_mnp')} (${count} × €${stdRate}, tier ${tierLabel})</span>
+      <span class="r-val green">${makeFmt(stdTotal)}</span>
+    </div>
+    ${garaBonus > 0 ? `<div class="result-row">
+      <span>${t('calc_gara_bonus')} (${count} × €${garaBonus})</span>
+      <span class="r-val blue">${makeFmt(garaTotal)}</span>
+    </div>` : ''}
+    ${t1r > 0 ? `<div class="result-row">
+      <span>${t('calc_t1_mnp_label')} (${t1r} × €4)</span>
+      <span class="r-val gold">${makeFmt(t1Total)}</span>
+    </div>` : ''}
+  `;
+
+  const bdItems = document.getElementById('bd-items');
+  bdItems.innerHTML = `
+    <div class="bd-item">
+      <span>${t('calc_std_mnp')}</span>
+      <span class="bd-v">${makeFmt(stdTotal)}</span>
+    </div>
+    <div class="bd-item">
+      <span>${t('calc_gara_bonus')}</span>
+      <span class="bd-v gara">${garaBonus > 0 ? makeFmt(garaTotal) : '—'}</span>
+    </div>
+    <div class="bd-item">
+      <span>${t('calc_t1_mnp_label')}</span>
+      <span class="bd-v">${t1r > 0 ? makeFmt(t1Total) : '—'}</span>
+    </div>
+  `;
+
+  document.getElementById('res-mnp-total').textContent = makeFmt(grand);
+  document.getElementById('res-mnp').classList.add('visible');
+}
+
+// Allow Enter key in calc inputs
+document.querySelectorAll('#calc-new input, #calc-new select').forEach(el => {
+  el.addEventListene
