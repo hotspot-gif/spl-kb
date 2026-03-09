@@ -366,10 +366,12 @@ body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellips
           <div class="calc-field">
             <label data-i18n="lbl_t1_renewals">T1 Eligible Renewals</label>
             <input type="number" id="n-t1" value="0" min="0" max="9999">
+            <div id="t1-hint" style="display:none;margin-top:6px;padding:7px 10px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.35);border-radius:5px;font-size:11px;color:#fca5a5;line-height:1.5;"></div>
           </div>
           <div class="calc-field">
             <label data-i18n="lbl_t2_renewals">T2 Eligible Renewals</label>
             <input type="number" id="n-t2" value="0" min="0" max="9999">
+            <div id="t2-hint" style="display:none;margin-top:6px;padding:7px 10px;background:rgba(220,38,38,.12);border:1px solid rgba(220,38,38,.35);border-radius:5px;font-size:11px;color:#fca5a5;line-height:1.5;"></div>
           </div>
         </div>
         <button class="calc-btn" id="btn-calc-new" data-i18n="calc_btn">Calculate Earnings</button>
@@ -510,6 +512,11 @@ function setLang(lang) {
   // Reset calculator results
   document.getElementById('res-new').classList.remove('visible');
   document.getElementById('res-mnp').classList.remove('visible');
+  // Clear validation hints
+  var t1h = document.getElementById('t1-hint');
+  var t2h = document.getElementById('t2-hint');
+  if (t1h) { t1h.style.display = 'none'; document.getElementById('n-t1').style.borderColor = ''; }
+  if (t2h) { t2h.style.display = 'none'; document.getElementById('n-t2').style.borderColor = ''; }
 }
 
 function switchCalcTab(tab) {
@@ -526,16 +533,52 @@ function fmt(n) {
 
 function calcNew() {
   var bonus = parseFloat(document.getElementById('n-plan').value) || 0;
-  var acts = parseInt(document.getElementById('n-acts').value) || 0;
-  var t1 = parseInt(document.getElementById('n-t1').value) || 0;
-  var t2 = parseInt(document.getElementById('n-t2').value) || 0;
+  var acts  = parseInt(document.getElementById('n-acts').value) || 0;
+  var t1    = parseInt(document.getElementById('n-t1').value) || 0;
+  var t2    = parseInt(document.getElementById('n-t2').value) || 0;
+
+  var t1Hint = document.getElementById('t1-hint');
+  var t2Hint = document.getElementById('t2-hint');
+  var t1Input = document.getElementById('n-t1');
+  var t2Input = document.getElementById('n-t2');
+
+  // --- T1 validation: must be > 30% of activations ---
+  var t1Min = Math.ceil(acts * 0.30) + 1; // strictly > 30%
+  var t1Valid = (t1 === 0) || (acts > 0 && t1 / acts > 0.30);
+  if (t1 > 0 && !t1Valid) {
+    var t1Pct = acts > 0 ? ((t1 / acts) * 100).toFixed(1) : 0;
+    t1Hint.innerHTML = '&#9888; T1 not eligible &mdash; renewal rate is <strong>' + t1Pct + '%</strong>.<br>Minimum required: &gt;30% of activations (' + acts + ' &times; 30% = ' + Math.floor(acts * 0.30) + ', so you need at least <strong>' + t1Min + '</strong> renewals).';
+    t1Hint.style.display = 'block';
+    t1Input.style.borderColor = '#dc2626';
+    t1 = 0; // zero out ineligible bonus
+  } else {
+    t1Hint.style.display = 'none';
+    t1Input.style.borderColor = '';
+  }
+
+  // --- T2 validation: must be > 60% of T1 renewals ---
+  var t2Min = Math.ceil(t1 * 0.60) + 1; // strictly > 60%
+  var t2Valid = (t2 === 0) || (t1 > 0 && t2 / t1 > 0.60);
+  if (t2 > 0 && !t2Valid) {
+    var t2Pct = t1 > 0 ? ((t2 / t1) * 100).toFixed(1) : 0;
+    t2Hint.innerHTML = '&#9888; T2 not eligible &mdash; second renewal rate is <strong>' + t2Pct + '%</strong> of first renewals.<br>Minimum required: &gt;60% of T1 renewals (' + t1 + ' &times; 60% = ' + Math.floor(t1 * 0.60) + ', so you need at least <strong>' + t2Min + '</strong> second renewals).';
+    t2Hint.style.display = 'block';
+    t2Input.style.borderColor = '#dc2626';
+    t2 = 0; // zero out ineligible bonus
+  } else {
+    t2Hint.style.display = 'none';
+    t2Input.style.borderColor = '';
+  }
+
   var actTotal = acts * bonus;
-  var t1Total = t1 * 4;
-  var t2Total = t2 * 4;
-  var grand = actTotal + t1Total + t2Total;
+  var t1Total  = t1 * 4;
+  var t2Total  = t2 * 4;
+  var grand    = actTotal + t1Total + t2Total;
+
   var html = '<div class="result-row"><span>' + t('calc_act_label') + ' (' + acts + ' &times; ' + fmt(bonus) + ')</span><span class="r-val green">' + fmt(actTotal) + '</span></div>';
   if (t1 > 0) html += '<div class="result-row"><span>' + t('calc_t1_label') + ' (' + t1 + ' &times; &euro;4)</span><span class="r-val blue">' + fmt(t1Total) + '</span></div>';
   if (t2 > 0) html += '<div class="result-row"><span>' + t('calc_t2_label') + ' (' + t2 + ' &times; &euro;4)</span><span class="r-val gold">' + fmt(t2Total) + '</span></div>';
+
   document.getElementById('res-new-rows').innerHTML = html;
   document.getElementById('res-new-total').textContent = fmt(grand);
   document.getElementById('res-new').classList.add('visible');
