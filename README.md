@@ -4,7 +4,7 @@
 A multilingual, interactive incentive scheme website for Lycamobile authorised retailers.
 
 ## 🌐 Live Site
-👉 **https://YOUR-USERNAME.github.io/lycamobile-incentive/**
+👉 **https://hotspot-gif.github.io/spl-kb**
 
 ---
 
