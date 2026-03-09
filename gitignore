@@ -1,0 +1,53 @@
+# ── OS generated files ──────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ── Editor & IDE ─────────────────────────
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# ── Logs & temp files ────────────────────
+*.log
+*.tmp
+*.temp
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Dependency directories ───────────────
+node_modules/
+bower_components/
+
+# ── Build output ─────────────────────────
+dist/
+build/
+out/
+
+# ── Environment & secrets ────────────────
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+
+# ── Archive / backup files ───────────────
+*.zip
+*.tar.gz
+*.bak
+*.orig
+
+# ── Local dev notes ──────────────────────
+TODO.md
+NOTES.md
+scratch.*
