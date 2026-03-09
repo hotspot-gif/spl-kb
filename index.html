@@ -1286,13 +1286,13 @@
   <div class="footer-links">
     <a href="https://retailer.lycamobile.it/" target="_blank" data-i18n="portal_link">Retailer Portal</a>
     <a href="https://www.lycamobile.it" target="_blank">www.lycamobile.it</a>
-    <a href="/cdn-cgi/l/email-protection#65170011040c09001725091c0604080a070c09004b0c11"><span class="__cf_email__" data-cfemail="c8baadbca9a1a4adba88a4b1aba9a5a7aaa1a4ade6a1bc">[email&#160;protected]</span></a>
+    <a href="mailto:retailer@lycamobile.it">retailer@lycamobile.it</a>
   </div>
   <p class="footer-copy">© 2026 Lycamobile. <span data-i18n="all_rights">All rights reserved.</span></p>
 </footer>
 
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ═══════════════════════════════════
 // TRANSLATIONS
 // ═══════════════════════════════════
@@ -1848,4 +1848,11 @@ function calcMnp() {
 
 // Allow Enter key in calc inputs
 document.querySelectorAll('#calc-new input, #calc-new select').forEach(el => {
-  el.addEventListene
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') calcNew(); });
+});
+document.querySelectorAll('#calc-mnp input, #calc-mnp select').forEach(el => {
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') calcMnp(); });
+});
+</script>
+</body>
+</html>
